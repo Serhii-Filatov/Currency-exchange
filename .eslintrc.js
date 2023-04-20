@@ -10,12 +10,8 @@ module.exports = {
     ecmaVersion: 'latest',
     sourceType: 'module',
   },
-  
-  // * перенесенно с проекта calculator
   plugins: ['prettier', 'import'],
   ignorePatterns: ['.eslintrc.js', 'commitlint.config.js', 'package-lock.json'],
-  
-  // * перенесенно с проекта calculator
   rules: {
     'linebreak-style': ['error', (process.platform === 'win32' ? 'windows' : 'unix')],
     'import/prefer-default-export': 'off',
