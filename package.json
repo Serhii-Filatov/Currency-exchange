@@ -21,6 +21,8 @@
   },
   "homepage": "https://github.com/Serhii-Filatov/Currency-exchange#readme",
   "devDependencies": {
+    "@commitlint/cli": "^17.6.1",
+    "@commitlint/config-conventional": "^17.6.1",
     "@linthtml/linthtml": "^0.9.4",
     "eslint": "^8.38.0",
     "eslint-config-airbnb-base": "^15.0.0",
