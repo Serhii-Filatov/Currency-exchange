@@ -1,0 +1,39 @@
+{
+  "name": "currency-exchange",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "author": "Serhii Filatov <filser.spirit@gmail.com>",
+  "license": "ISC",
+  "homepage": "https://github.com/Serhii-Filatov/Currency-exchange#readme",
+  "scripts": {
+    "lint": "npx eslint .",
+    "lint:fix": "npx eslint . --fix",
+    "format": "npx prettier . --write",
+    "lint:html": "npx linthtml 'src/**/*.html'",
+    "lint:style": "npx stylelint **/*.scss"
+  },
+  "devDependencies": {
+    "@commitlint/cli": "^17.6.1",
+    "@commitlint/config-conventional": "^17.6.1",
+    "@linthtml/linthtml": "^0.9.4",
+    "eslint": "^8.38.0",
+    "eslint-config-airbnb-base": "^15.0.0",
+    "eslint-config-prettier": "^8.8.0",
+    "eslint-plugin-import": "^2.27.5",
+    "eslint-plugin-prettier": "^4.2.1",
+    "husky": "^8.0.3",
+    "lint-staged": "^13.2.1",
+    "prettier": "2.8.7",
+    "stylelint": "^15.5.0",
+    "stylelint-config-standard": "^33.0.0",
+    "stylelint-config-standard-scss": "^8.0.0"
+  },
+  "bugs": {
+    "url": "https://github.com/Serhii-Filatov/Currency-exchange/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Serhii-Filatov/Currency-exchange.git"
+  }
+}
