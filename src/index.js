@@ -1,1 +1,1 @@
-console.log('Привет из node.js');
+import './style.css';
