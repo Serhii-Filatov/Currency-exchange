@@ -13,7 +13,7 @@
     "lint:fix": "npx eslint . --fix",
     "format": "npx prettier . --write",
     "lint:html": "npx linthtml 'src/**/*.html'",
-    "lint:style": "npx stylelint **/*.scss"
+    "lint:style": "npx stylelint **/*.css"
   },
   "dependencies": {
     "stylelint": "^15.6.0",
