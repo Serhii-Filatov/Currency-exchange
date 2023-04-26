@@ -1,10 +1,10 @@
 module.exports = {
-  content: ['./dist/*.html'],
+  content: [ "./dist/*.html" ],
   theme: {
-    extend: {},
+    extend: {}
   },
   variants: {
-    extend: {},
+    extend: {}
   },
-  plugins: [],
-}
+  plugins: []
+};
