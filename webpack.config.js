@@ -4,8 +4,8 @@ const { EsbuildPlugin } = require( "esbuild-loader" );
 const MiniCssExtractPlugin = require( "mini-css-extract-plugin" );
 const CssMinimizerPlugin = require( "css-minimizer-webpack-plugin" );
 const StylelintPlugin = require( "stylelint-webpack-plugin" );
-const webpack = require( "webpack" );
 
+const webpack = require( "webpack" );
 const path = require( "path" );
 
 module.exports = {
@@ -33,31 +33,23 @@ module.exports = {
   module: {
     rules: [
       {
-        test: /\.m?js$/,
-        loader: "esbuild-loader",
-        options: {
-          target: "es2015",
-          minify: true
-        }
-      },
-      {
-        test: /\.m?js$/,
-        exclude: /node_modules/,
-        use: {
-          loader: "babel-loader",
-          options: {
-            presets: [ "@babel/preset-env" ]
-          }
-        }
-      },
-      {
         test: /\.css$/,
-        use: [ MiniCssExtractPlugin.loader, "css-loader" ]
+        use: [
+          "style-loader",
+          "css-loader",
+          {
+            loader: "esbuild-loader",
+            options: {
+              loader: "css",
+              minify: true
+            }
+          }
+        ]
       },
       {
         test: /\.css$/i,
         include: path.resolve( __dirname, "src" ),
-        use: [ "style-loader", "css-loader", "postcss-loader" ]
+        use: [ MiniCssExtractPlugin.loader, "style-loader", "css-loader", "postcss-loader" ]
       }
     ]
   },
