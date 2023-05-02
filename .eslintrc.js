@@ -4,17 +4,14 @@ module.exports = {
     es2022: true,
     jquery: true,
   },
-  extends: ['airbnb-base', 'prettier', 'jquery'],
-  overrides: [
-  ],
+  extends: ['airbnb-base'],
+  plugins: ['prettier', 'import'],
+  overrides: [],
   parserOptions: {
     ecmaVersion: 'latest',
     sourceType: 'module',
   },
-  plugins: ['prettier', 'import'],
-  ignorePatterns: ['.eslintrc.js', 'commitlint.config.js', 'package-lock.json'],
   rules: {
-    'linebreak-style': ['error', (process.platform === 'win32' ? 'windows' : 'unix')],
     'import/prefer-default-export': 'off',
     'import/named': 'off',
     'class-methods-use-this': 'off',

@@ -1,67 +1,66 @@
-const HtmlWebpackPlugin = require( "html-webpack-plugin" );
-const { CleanWebpackPlugin } = require( "clean-webpack-plugin" );
-const { EsbuildPlugin } = require( "esbuild-loader" );
-const MiniCssExtractPlugin = require( "mini-css-extract-plugin" );
-const CssMinimizerPlugin = require( "css-minimizer-webpack-plugin" );
-const StylelintPlugin = require( "stylelint-webpack-plugin" );
+const HtmlWebpackPlugin = require('html-webpack-plugin');
+const { CleanWebpackPlugin } = require('clean-webpack-plugin');
+const { EsbuildPlugin } = require('esbuild-loader');
+const MiniCssExtractPlugin = require('mini-css-extract-plugin');
+const CssMinimizerPlugin = require('css-minimizer-webpack-plugin');
+const StylelintPlugin = require('stylelint-webpack-plugin');
 
-const webpack = require( "webpack" );
-const path = require( "path" );
+const webpack = require('webpack');
+const path = require('path');
 
 module.exports = {
-  entry: "./src/index.js",
+  entry: './src/index.js',
   output: {
-    filename: "[name].bundle.js",
-    path: path.resolve( __dirname, "./dist" )
+    filename: '[name].bundle.js',
+    path: path.resolve(__dirname, './dist'),
   },
   devServer: {
     static: {
-      directory: path.join( __dirname, "/" )
+      directory: path.join(__dirname, '/'),
     },
-    open: true
+    open: true,
   },
   plugins: [
     new HtmlWebpackPlugin(),
     new CleanWebpackPlugin(),
     new MiniCssExtractPlugin(),
     new StylelintPlugin(),
-    new webpack.ProvidePlugin( {
-      $: "jquery",
-      jQuery: "jquery"
-    } )
+    new webpack.ProvidePlugin({
+      $: 'jquery',
+      jQuery: 'jquery',
+    }),
   ],
   module: {
     rules: [
       {
-        test: /\.css$/,
-        use: [
-          "style-loader",
-          "css-loader",
-          {
-            loader: "esbuild-loader",
-            options: {
-              loader: "css",
-              minify: true
-            }
-          }
-        ]
-      },
-      {
         test: /\.css$/i,
-        include: path.resolve( __dirname, "src" ),
-        use: [ MiniCssExtractPlugin.loader, "style-loader", "css-loader", "postcss-loader" ]
-      }
-    ]
+        include: path.resolve(__dirname, 'src'),
+        use: [
+          MiniCssExtractPlugin.loader,
+          'style-loader',
+          'css-loader',
+          'postcss-loader',
+          {
+            loader: 'esbuild-loader',
+            options: {
+              loader: 'css',
+              minify: true,
+            },
+          },
+        ],
+      },
+      {},
+    ],
   },
-  stats: "minimal",
+  stats: 'minimal',
   optimization: {
     minimizer: [
-      new EsbuildPlugin( {
-        target: "es2015",
-        css: true
-      } ),
-      new CssMinimizerPlugin()
+      new EsbuildPlugin({
+        target: 'es2015',
+        css: true,
+      }),
+      new CssMinimizerPlugin(),
     ],
-    minimize: true
-  }
+    minimize: true,
+  },
 };
