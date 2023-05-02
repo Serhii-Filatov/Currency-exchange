@@ -19,6 +19,7 @@ module.exports = {
       directory: path.join(__dirname, '/'),
     },
     open: true,
+    hot: true,
   },
   plugins: [
     new HtmlWebpackPlugin(),
@@ -36,7 +37,6 @@ module.exports = {
         test: /\.css$/i,
         include: path.resolve(__dirname, 'src'),
         use: [
-          MiniCssExtractPlugin.loader,
           'style-loader',
           'css-loader',
           'postcss-loader',
@@ -57,7 +57,6 @@ module.exports = {
     minimizer: [
       new EsbuildPlugin({
         target: 'es2015',
-        css: true,
       }),
       new CssMinimizerPlugin(),
     ],
