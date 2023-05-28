@@ -2,7 +2,6 @@ import { currenciesMarkup, cryptoMarkup } from '../store/currencyExchangeStore';
 
 export class Options {
   render() {
-    $('.app').append($('<div class="switches grid gap-4 grid-cols-2 mb-[22px]"></div>'));
     $('.switches')
       .append(
         $(

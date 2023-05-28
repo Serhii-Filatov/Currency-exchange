@@ -1,4 +1,4 @@
-export class InputOutput {
+export class OutputInput {
   render() {
     $('.switches')
       .append(
