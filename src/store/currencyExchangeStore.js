@@ -1,6 +1,8 @@
 export const currencies = ['USD', 'UAH', 'EUR'];
 export const crypto = ['BTC', 'BNB', 'CTX', 'LTC', 'ADA', 'RVN', 'ASX', 'SOL', 'DOT'];
 export class Store {}
+
+// Убрать отсюда (в сервис?)
 export function currenciesMarkup() {
   let murkup;
   currencies.forEach((element) => {
