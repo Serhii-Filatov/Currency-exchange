@@ -1,4 +1,4 @@
-import { currenciesMarkup, cryptoMarkup } from '../store/currencyExchangeStore';
+import { setMarkup } from '../store/currencyExchangeStore';
 
 export class Options {
   render() {
@@ -13,7 +13,7 @@ export class Options {
           '<div><select id="crypto-js" class="w-[203px] h-[51px] pl-6 rounded-lg mb-[5px] shadow-lg shadow-slate-500/60"></select></div>',
         ),
       );
-    $('#currencies-js').append(currenciesMarkup());
-    $('#crypto-js').append(cryptoMarkup());
+    $('#currencies-js').append(setMarkup());
+    $('#crypto-js').append(setMarkup());
   }
 }

@@ -1,20 +1,9 @@
-export const currencies = ['USD', 'UAH', 'EUR'];
-export const crypto = ['BTC', 'BNB', 'CTX', 'LTC', 'ADA', 'RVN', 'ASX', 'SOL', 'DOT'];
-export class Store {}
+import { dataArray } from '../utils/httpClient';
 
-// Убрать отсюда (в сервис?)
-export function currenciesMarkup() {
+export function setMarkup() {
   let murkup;
-  currencies.forEach((element) => {
-    murkup += `<option value="${element}">${element}</option>`;
-  });
-  return murkup;
-}
-
-export function cryptoMarkup() {
-  let murkup;
-  crypto.forEach((element) => {
-    murkup += `<option value="${element}">${element}</option>`;
+  dataArray.forEach((element) => {
+    murkup += `<option value="${element.price}">${element.symbol}</option>`;
   });
   return murkup;
 }
