@@ -35,7 +35,6 @@ export class Options {
           inputElement.value = selectedValue;
         }),
       );
-    console.log(this.renderOptions());
     $('#crypto-js').append(this.renderOptions());
   }
 
@@ -47,6 +46,7 @@ export class Options {
     // console.log(dataArray);
     let murkup;
     dataArray.coins.forEach((element) => {
+      console.log('render');
       $('#crypto-js').append($(`<option value="${element.price}">${element.symbol}</option>`));
     });
     return murkup;
