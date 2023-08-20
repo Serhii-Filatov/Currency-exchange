@@ -1,10 +1,14 @@
 import { CoinService } from '../services/coinService';
+import { store } from '../store/currencyExchangeStore';
 
 export class Options {
   coinService;
 
+  currencies;
+
   constructor() {
     this.coinService = new CoinService();
+    this.currencies = store.currencies;
   }
 
   render() {
@@ -32,16 +36,18 @@ export class Options {
         }),
       );
     console.log(this.renderOptions());
-    // $('#currencies-js').append(this.renderOptions());
     $('#crypto-js').append(this.renderOptions());
   }
 
   async renderOptions() {
+    await this.currencies.forEach((element) => {
+      $('#currencies-js').append($(`<option value="${element}">${element}</option>`));
+    });
     const dataArray = await this.coinService.getCoins();
-    console.log(dataArray);
+    // console.log(dataArray);
     let murkup;
     dataArray.coins.forEach((element) => {
-      $('#currencies-js').append($(`<option value="${element.price}">${element.symbol}</option>`));
+      $('#crypto-js').append($(`<option value="${element.price}">${element.symbol}</option>`));
     });
     return murkup;
   }
