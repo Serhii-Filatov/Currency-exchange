@@ -6,13 +6,10 @@ export class ExchangeButton {
       )
       .on('click', () => {
         const input1 = document.getElementById('currencies-input-js');
-        const input2 = document.getElementById('crypto-input-js');
 
         const enteredValue1 = input1.value;
-        const enteredValue2 = input2.value;
 
         console.log('Введенное в input1:', enteredValue1);
-        console.log('Введенное в input2:', enteredValue2);
       });
   }
 }

@@ -15,9 +15,10 @@ export class Options {
 
   setupEventListeners() {
     const optionsSelect = document.getElementById('currencies-js');
-    optionsSelect.addEventListener('change', () => {
+    optionsSelect.addEventListener('change', async () => {
       const selectedOption = optionsSelect.value;
       this.optionObservable.notify(selectedOption);
+      this.renderOptions();
     });
 
     this.optionObservable.addObserver(async (option) => {
@@ -25,11 +26,14 @@ export class Options {
     });
   }
 
+  dataArray;
+
   async updateCoins(option) {
-    await this.coinService.getCoins(option);
+    this.dataArray = await this.coinService.getCoins(option);
+    this.renderOptions();
   }
 
-  render() {
+  async render() {
     $('.switches')
       .append(
         $(
@@ -41,19 +45,24 @@ export class Options {
           '<div><select id="crypto-js" class="w-[203px] h-[51px] pl-6 rounded-lg mb-[5px] shadow-lg shadow-slate-500/60"></select></div>',
         ),
       );
-    this.setupEventListeners();
-    this.renderOptions();
-  }
-
-  async renderOptions() {
-    await this.currencies.forEach((element) => {
+    this.currencies.forEach((element) => {
       $('#currencies-js').append($(`<option value="${element}">${element}</option>`));
     });
-
-    const dataArray = await this.coinService.getCoins();
-    dataArray.coins.forEach((element) => {
+    this.setupEventListeners();
+    this.renderOptions();
+    const data = await this.coinService.getCoins();
+    data.coins.forEach((element) => {
       $('#crypto-js').append($(`<option value="${element.price}">${element.symbol}</option>`));
     });
+  }
+
+  renderOptions() {
+    $('#crypto-js').empty();
+    if (this.dataArray) {
+      this.dataArray.coins.forEach((element) => {
+        $('#crypto-js').append($(`<option value="${element.price}">${element.symbol}</option>`));
+      });
+    }
     $('#crypto-js').on('change', (event) => {
       const selectedValue = event.target.value;
       $('#crypto-input-js').val(selectedValue);
