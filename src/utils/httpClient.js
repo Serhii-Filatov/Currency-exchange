@@ -7,6 +7,7 @@ export class HttpClient {
         if (xhr.readyState === 4 && xhr.status === 200) {
           const response = JSON.parse(xhr.responseText);
           resolve(response);
+          console.log('Ответ Сервера:', response);
         }
       };
       xhr.send();

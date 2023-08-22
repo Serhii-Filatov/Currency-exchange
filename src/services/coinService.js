@@ -9,7 +9,9 @@ export class CoinService {
     this.httpClient = new HttpClient();
   }
 
-  getCoins(currency = 'USD') {
-    return this.httpClient.getData(`${this.url}coins?skip=0&limit=10&currency=${currency}`, 'GET');
+  async getCoins(currency = 'USD') {
+    console.log('Запрос:', currency);
+    const response = await this.httpClient.getData(`${this.url}coins?skip=0&limit=10&currency=${currency}`, 'GET');
+    return response;
   }
 }
