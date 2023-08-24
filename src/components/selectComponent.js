@@ -15,6 +15,7 @@ export class Options {
 
   setupEventListeners() {
     const optionsSelect = document.getElementById('currencies-js');
+
     optionsSelect.addEventListener('change', async () => {
       const selectedOption = optionsSelect.value;
       this.optionObservable.notify(selectedOption);
@@ -52,15 +53,20 @@ export class Options {
     this.renderOptions();
     const data = await this.coinService.getCoins();
     data.coins.forEach((element) => {
-      $('#crypto-js').append($(`<option value="${element.price}">${element.symbol}</option>`));
+      $('#crypto-js').append(
+        $(`<option value="${element.price.toFixed(2)}">${element.symbol}</option>`),
+      );
     });
+    $('#crypto-input-js').val(data.coins[0].price.toFixed(2));
   }
 
   renderOptions() {
     $('#crypto-js').empty();
     if (this.dataArray) {
       this.dataArray.coins.forEach((element) => {
-        $('#crypto-js').append($(`<option value="${element.price}">${element.symbol}</option>`));
+        $('#crypto-js').append(
+          $(`<option value="${element.price.toFixed(2)}">${element.symbol}</option>`),
+        );
       });
     }
     $('#crypto-js').on('change', (event) => {
